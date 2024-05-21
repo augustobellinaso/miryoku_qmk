@@ -8,6 +8,12 @@ TAP_DANCE_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 
+#Enable OLED
+OLED_ENABLE     = yes
+OLED_DRIVER     = SSD1306
+
+WPM_ENABLE = yes
+
 INTROSPECTION_KEYMAP_C = manna-harbour_miryoku.c # keymaps
 
 include users/manna-harbour_miryoku/custom_rules.mk
