@@ -129,7 +129,7 @@ bool oled_task_user(void) {
     };
 
     //draw image to oled
-    oled_write_P(pix_logo, false);
+    oled_write_raw_P(pix_logo, sizeof(pix_logo));
 
     return false;
 }
