@@ -11,6 +11,7 @@ KEY_OVERRIDE_ENABLE = yes
 #Enable OLED
 OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
+LTO_ENABLE = yes
 
 WPM_ENABLE = yes
 
