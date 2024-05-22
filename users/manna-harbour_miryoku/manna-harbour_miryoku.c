@@ -89,3 +89,14 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_fun, KC_APP)
 };
 #endif
+
+#ifdef OLED_ENABLE
+
+bool oled_task_user(void) {
+	oled_set_cursor(0, 1);
+
+    oled_write("Hello world", false);
+    return false;
+}
+
+#endif // OLED_ENABLE
