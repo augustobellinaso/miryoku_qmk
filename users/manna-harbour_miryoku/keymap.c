@@ -38,7 +38,9 @@ void oled_render_logo(void) {
 }
 
 bool oled_task_user(void) {
-	oled_render_logo();
+	oled_set_cursor(0, 1);
+
+    oled_write("Hello world", false);
     return false;
 }
 
