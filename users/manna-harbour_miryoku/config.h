@@ -40,8 +40,3 @@
   #define COMBO_TERM 200
   #define EXTRA_SHORT_COMBOS
 #endif
-
-// Luna PET
-#define OLED_TIMEOUT 120000
-#define OLED_BRIGHTNESS 120
-#define SPLIT_WPM_ENABLE
