@@ -40,3 +40,5 @@
   #define COMBO_TERM 200
   #define EXTRA_SHORT_COMBOS
 #endif
+
+#define OLED_TIMEOUT 120000
