@@ -260,25 +260,25 @@ static void print_status_narrow(void) {
 
     oled_set_cursor(0, 6);
     switch (get_highest_layer(layer_state)) {
-        case _BASE:
+        case U_BASE:
             oled_write("Base", false);
             break;
-        case _NAV:
+        case U_NAV:
             oled_write("Nav", false);
             break;
-        case _MOUSE:
+        case U_MOUSE:
             oled_write("Mouse", false);
             break;
-        case _MEDIA:
+        case U_MEDIA:
             oled_write("Media", false);
             break;
-        case _NUM:
+        case U_NUM:
             oled_write("Num", false);
             break;
-        case _FUN:
+        case U_FUN:
             oled_write("Fun", false);
             break;
-        case _SYM:
+        case U_SYM:
             oled_write("Sym", false);
             break;
         default:
@@ -287,7 +287,7 @@ static void print_status_narrow(void) {
     /* caps lock */
     oled_set_cursor(0, 8);
     led_t led_state_caps = host_keyboard_led_state();
-    oled_write_P(led_state_caps.caps_lock ? PSTR("CPSLK On") : PSTR("CPSLK Off"), false);
+    oled_write_P(led_state_caps.caps_lock ? PSTR("CPSLK\n On") : PSTR("CPSLK\n Off"), false);
 
     /* KEYBOARD PET RENDER START */
 
