@@ -253,17 +253,41 @@ static void print_status_narrow(void) {
     oled_write_raw_P(windows_logo, sizeof(windows_logo));
 
     oled_set_cursor(0, 3);
-
     oled_set_cursor(0, 5);
 
     /* Print current layer */
     oled_write("LAYER", false);
 
     oled_set_cursor(0, 6);
-
+    switch (get_highest_layer(layer_state)) {
+        case _BASE:
+            oled_write("Base", false);
+            break;
+        case _NAV:
+            oled_write("Nav", false);
+            break;
+        case _MOUSE:
+            oled_write("Mouse", false);
+            break;
+        case _MEDIA:
+            oled_write("Media", false);
+            break;
+        case _NUM:
+            oled_write("Num", false);
+            break;
+        case _FUN:
+            oled_write("Fun", false);
+            break;
+        case _SYM:
+            oled_write("Sym", false);
+            break;
+        default:
+            oled_write("Undef", false);
+    }
     /* caps lock */
     oled_set_cursor(0, 8);
-    oled_write("CPSLK", led_usb_state.caps_lock);
+    led_t led_state_caps = host_keyboard_led_state();
+    oled_write_P(led_state_caps.caps_lock ? PSTR("CPSLK On") : PSTR("CPSLK Off"), false);
 
     /* KEYBOARD PET RENDER START */
 
@@ -273,6 +297,25 @@ static void print_status_narrow(void) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
+
+
+bool oled_task_user(void) {
+    /* KEYBOARD PET VARIABLES START */
+
+    current_wpm   = get_current_wpm();
+    led_usb_state = host_keyboard_led_state();
+
+    /* KEYBOARD PET VARIABLES END */
+
+    if (is_keyboard_master()) {
+        print_status_narrow();
+    } else {
+        print_logo_narrow();
+    }
+    return false;
+}
+
+#endif // OLED_ENABLE
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {       
@@ -300,20 +343,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-bool oled_task_user(void) {
-    /* KEYBOARD PET VARIABLES START */
-
-    current_wpm   = get_current_wpm();
-    led_usb_state = host_keyboard_led_state();
-
-    /* KEYBOARD PET VARIABLES END */
-
-    if (is_keyboard_master()) {
-        print_status_narrow();
-    } else {
-        print_logo_narrow();
-    }
-    return false;
-}
-
-#endif // OLED_ENABLE
