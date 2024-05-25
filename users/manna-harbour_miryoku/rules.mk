@@ -9,8 +9,9 @@ CAPS_WORD_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 
 #Enable OLED
-OLED_ENABLE     = yes
+OLED_ENABLE = yes
 LTO_ENABLE = yes
+WPM_ENABLE = yes
 
 INTROSPECTION_KEYMAP_C = manna-harbour_miryoku.c # keymaps
 
