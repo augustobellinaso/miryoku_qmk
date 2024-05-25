@@ -42,3 +42,4 @@
 #endif
 
 #define OLED_TIMEOUT 120000
+#define SPLIT_WPM_ENABLE
