@@ -285,6 +285,32 @@ static void print_status_narrow(void) {
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {       
+
+            /* KEYBOARD PET STATUS START */
+
+        case KC_LCTL:
+        case KC_RCTL:
+            if (record->event.pressed) {
+                isSneaking = true;
+            } else {
+                isSneaking = false;
+            }
+            break;
+        case KC_SPC:
+            if (record->event.pressed) {
+                isJumping  = true;
+                showedJump = false;
+            } else {
+                isJumping = false;
+            }
+            break;
+
+            /* KEYBOARD PET STATUS END */
+    }
+    return true;
+}
 bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES START */
 
