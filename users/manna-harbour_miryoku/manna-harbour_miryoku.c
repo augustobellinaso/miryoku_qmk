@@ -125,13 +125,13 @@ static const char PROGMEM fus_ro_dah_logo[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 
 static void print_logo_narrow(void) {
     oled_set_cursor(0, 5);
-    oled_write_raw_P(fus_ro_dah_logo, sizeof(fus_ro_dah_logo));
+    //oled_write_raw_P(fus_ro_dah_logo, sizeof(fus_ro_dah_logo));
 }
 
 static void print_status_narrow(void) {
     /* Print current mode */
     oled_set_cursor(0, 0);
-    oled_write_raw_P(skyrim_logo, sizeof(skyrim_logo));
+    //oled_write_raw_P(skyrim_logo, sizeof(skyrim_logo));
     
     oled_set_cursor(0, 8);
 
@@ -187,12 +187,12 @@ bool oled_task_user(void) {
     current_wpm   = get_current_wpm();
 
     /* KEYBOARD PET VARIABLES END */
-
-    if (is_keyboard_master()) {
-        print_status_narrow();
-    } else {
-        print_logo_narrow();
-    }
+    print_status_narrow();
+    // if (is_keyboard_master()) {
+    //     print_status_narrow();
+    // } else {
+    //     print_logo_narrow();
+    // }
     return false;
 }
 
