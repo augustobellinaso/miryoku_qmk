@@ -123,11 +123,6 @@ static const char PROGMEM fus_ro_dah_logo[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 0x07, 0x08, 0x5f, 0x00, 0x07, 0x00, 0x4f, 0x00, 0x07, 0x00, 0x0e, 0x00, 0x06, 0x00, 0x08, 0x00, 
 0x06, 0x00, 0x08, 0x00, 0x06, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-static void print_logo_narrow(void) {
-    oled_set_cursor(0, 5);
-    //oled_write_raw_P(fus_ro_dah_logo, sizeof(fus_ro_dah_logo));
-}
-
 static void print_status_narrow(void) {
     /* Print current mode */
     oled_set_cursor(0, 0);
@@ -180,19 +175,11 @@ static void print_status_narrow(void) {
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
-
 bool oled_task_user(void) {
-    /* KEYBOARD PET VARIABLES START */
 
     current_wpm   = get_current_wpm();
 
-    /* KEYBOARD PET VARIABLES END */
     print_status_narrow();
-    // if (is_keyboard_master()) {
-    //     print_status_narrow();
-    // } else {
-    //     print_logo_narrow();
-    // }
     return false;
 }
 
